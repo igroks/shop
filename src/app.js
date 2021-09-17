@@ -1,12 +1,10 @@
 import express from "express"
 import usersRoutes from "./routes/users"
 
-const bodyParser = require('body-parser')
+const app = express();
+const PORT = 3000;
 
-const app = express()
-const PORT = 3000
-
-app.use(bodyParser.json());
+app.use(express.json());
 app.use("/users", usersRoutes);
 
 app.listen(PORT, () => {

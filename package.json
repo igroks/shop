@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/IgorCarvalho14/PW2#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "nodemon": "^2.0.12",
