@@ -1,11 +1,8 @@
-.PHONY: setup
-setup: build
-	npm install
-
-.PHONY: stop
-stop:
+.PHONY: docker-stop
+docker-stop:
 	docker-compose down
 
-.PHONY: run
-run:
+.PHONY: docker-run
+dokcer-run:
 	docker-compose up -d
+	
