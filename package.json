@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/IgorCarvalho14/PW2#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "mysql2": "^2.3.0",
