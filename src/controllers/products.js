@@ -13,7 +13,6 @@ const create = async (req, res) => {
     try{
         const product = await Product.create(req.body);
         res.send(product);
-
     }catch (error){
         res.status(500).json(error);
     }
