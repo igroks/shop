@@ -3,6 +3,6 @@ docker-stop:
 	docker-compose down
 
 .PHONY: docker-run
-dokcer-run:
+docker-run:
 	docker-compose up -d
 	
