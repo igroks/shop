@@ -43,7 +43,7 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
     try{
         const { id } = req.params;
-        const [ deleted ] = await Product.destroy({where:{id:id}});
+        const deleted = await Product.destroy({where:{id:id}});
         if (deleted) res.status(200).json({ msg: "Deleted product" });
         else res.status(404).json({error: "Product not found"});
     }catch (error){
