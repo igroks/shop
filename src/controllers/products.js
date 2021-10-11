@@ -2,7 +2,7 @@ import { Product } from "../models/index"
 
 const index = async (req, res) => {
     try{
-        const products = await Products.findAll();
+        const products = await Product.findAll();
         res.send(products);
     } catch (error){
         res.status(500).json(error);
