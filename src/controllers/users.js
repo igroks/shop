@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import { User } from "../models/index"
 
 const index = async (req, res) => {
@@ -12,7 +11,7 @@ const index = async (req, res) => {
 
 const create = async (req, res) => {
     try{
-        const user = await User.create({ ...req.body, id:uuidv4() });
+        const user = await User.create(req.body);
         res.send(user);
     }catch (error){
         res.status(500).json(error);
@@ -44,7 +43,7 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
     try{
         const { id } = req.params;
-        const [ deleted ] = await User.destroy({where:{id:id}});
+        const deleted = await User.destroy({where:{id:id}});
         if (deleted) res.status(200).json({ msg: "Deleted user" });
         else res.status(404).json({error: "User not found"});
     }catch (error){
