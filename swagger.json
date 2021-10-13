@@ -1,5 +1,5 @@
 {
-    "openapi": "3.0.3",
+    "swagger": "2.0",
     "info": {
         "title": "Ecommerce Management API",
         "description":"This api aims to simulate the operation of an e-commerce for learning and obtaining grades in the web 2 programming discipline.",
@@ -46,7 +46,7 @@
                         "application/json":{
                             "schema": {
                                 "type": "object",
-                                "$ref": "#/components/schemas/Product"
+                                "$ref": "#/components/schemas/ProductRequest"
                             }
                         }
                     }
@@ -131,7 +131,7 @@
                         "application/json":{
                             "schema": {
                                 "type": "object",
-                                "$ref": "#/components/schemas/Product"
+                                "$ref": "#/components/schemas/ProductRequest"
                             }
                         }
                     }
@@ -217,6 +217,69 @@
                 }
             }
         },
+        "/products/upload-file/{productId}": {
+            "post": {
+                "tags": ["Products"],
+                "summary": "Uploads a file to respective product",
+                "description": "This route is responsible for uploading product images, saving in the `public/uploads/{productId}` directory",
+                "operationId": "uploadFile",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "Id of product",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "file to upload",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "object",
+                                    "properties":{
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "File uploded"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description": "Internal server error"
+                    },
+                    "404":{
+                        "description": "Not found",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/NotFoundProductMsg"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "summary": "Registered users",
@@ -248,7 +311,7 @@
                         "application/json":{
                             "schema": {
                                 "type": "object",
-                                "$ref": "#/components/schemas/User"
+                                "$ref": "#/components/schemas/UserRequest"
                             }
                         }
                     }
@@ -333,7 +396,7 @@
                         "application/json":{
                             "schema": {
                                 "type": "object",
-                                "$ref": "#/components/schemas/User"
+                                "$ref": "#/components/schemas/UserRequest"
                             }
                         }
                     }
@@ -422,7 +485,7 @@
     },
     "components": {
         "schemas": {
-            "Product":{
+            "ProductRequest":{
                 "type": "object",
                 "properties":{
                     "name":{
@@ -439,7 +502,7 @@
                     }
                 }
             },
-            "User":{
+            "UserRequest":{
                 "type": "object",
                 "properties":{
                     "userTypeId":{
