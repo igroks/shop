@@ -8,5 +8,6 @@ router.post("/", productsController.create);
 router.get("/:id", productsController.read);
 router.post("/:id", productsController.update);
 router.delete("/:id", productsController.remove);
+router.post("/upload-file/:id", productsController.uploadFile);
 
 export default router;
