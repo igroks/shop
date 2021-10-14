@@ -1,7 +1,7 @@
-import express from "express"
-import productsController from "../controllers/products"
+import express from "express";
+import productsController from "../controllers/products";
 
-const router = express.Router()
+const router = express.Router();
 
 router.get("/", productsController.index);
 router.post("/", productsController.create);

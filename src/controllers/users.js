@@ -1,4 +1,4 @@
-import { User } from "../models/index"
+import { User } from "../models/index";
 
 const index = async (req, res) => {
     try{

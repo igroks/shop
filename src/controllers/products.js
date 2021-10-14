@@ -1,4 +1,4 @@
-import { Product } from "../models/index"
+import { Product } from "../models/index";
 import multer from "multer";
 import fs from "fs";
 
