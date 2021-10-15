@@ -5,6 +5,8 @@ services:
             context: .
         env_file: ./.env
         command: npm start
+        networks:
+            - web
         volumes: 
             - .:/usr/app
         ports:
@@ -17,6 +19,8 @@ services:
     mysqldb:
         image: mysql
         env_file: ./.env
+        networks:
+            - web
         environment: 
             MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
             MYSQL_DATABASE: $MYSQL_DATABASE
@@ -26,6 +30,9 @@ services:
         volumes:
             - mysql:/var/lib/mysql
             - mysql_config:/etc/mysql
+
+networks:
+    web:
 volumes: 
     mysql:
     mysql_config:
