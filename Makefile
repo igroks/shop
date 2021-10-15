@@ -6,7 +6,7 @@ docker-stop:
 docker-run:
 	@docker-compose up -d
 	
-.PHONY: db-migrate
-db-migrate:
+.PHONY: docker-set-database
+docker-set-database:
 	@docker-compose run --rm web npx sequelize db:migrate
 	@docker-compose run --rm web npx sequelize-cli db:seed:all
