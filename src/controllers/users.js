@@ -1,4 +1,5 @@
 import { User } from "../models/index";
+import bcrypt from "bcryptjs";
 
 const index = async (req, res) => {
     try{
@@ -11,8 +12,12 @@ const index = async (req, res) => {
 
 const create = async (req, res) => {
     try{
-        const user = await User.create(req.body);
-        res.send(user);
+        bcrypt.genSalt(parseInt(process.env.BCRYPT_ROUNDS), (error, salt) => {
+            bcrypt.hash(req.body.password, salt, async (error, hash) => {
+                await  User.create({...req.body, password: hash});
+                res.json({msg: "Created user"});
+            });
+        });
     }catch (error){
         res.status(500).json(error);
     }
