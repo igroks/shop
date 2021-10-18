@@ -8,7 +8,7 @@ To start run:
 ```
 make docker-run
 ```
-To set database: 
+When first run, to perform migrations and seeds use: 
 
 ```
 make docker-set-database
@@ -21,4 +21,4 @@ The server will be available at port `3000`.
 
 # Usage
 
-For a broad knowledge of the functionality of this API see the documentation in the `/api-docs route`.
+For a broad knowledge of the functionality of this API see the documentation in the `/api-docs` route.
