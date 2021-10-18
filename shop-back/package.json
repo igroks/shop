@@ -1,0 +1,35 @@
+{
+  "name": "shop-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "nodemon -r esm src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorCarvalho14/Shop/shop-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorCarvalho14/Shop/shop-back/issues"
+  },
+  "homepage": "https://github.com/IgorCarvalho14/Shop/shop-back#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "multer": "^1.4.3",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.13",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0",
+    "swagger-ui-express": "^4.1.6",
+    "uuid": "^8.3.2"
+  }
+}
