@@ -2,7 +2,7 @@ import express from "express";
 import usersRouter from "./users";
 import productsRouter from "./products";
 import swaggerUi from "swagger-ui-express";
-import swaggerDocs from "../swagger.json";
+import swaggerDocs from "../../swagger.json";
 import mainRouter from "./main";
 
 const router = express.Router();
