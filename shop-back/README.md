@@ -17,7 +17,7 @@ To stop run:
 ```
 make docker-stop
 ```
-The server will be available at port `3000`.
+The server will be available at port `3020`.
 
 # Usage
 
