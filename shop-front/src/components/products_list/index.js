@@ -1,10 +1,12 @@
-import { display } from "@mui/system";
 import { useState, useEffect } from "react";
 import ProductCard from "../products_card";
+import SearchBar from "../search_bar";
 
 function ListProducts() {
 
     const [products, setProducts] = useState([]);
+    const [query, setQuery] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:3020/products", { credentials: 'include' })
@@ -12,15 +14,21 @@ function ListProducts() {
         .then(json => setProducts(json));     
     }, []);
 
-    const style = {
-        margin: "5px"
-    }
+    useEffect(() => {
+        setSearchResult(products.filter(prod => prod.name.toLowerCase().includes(query.toLowerCase())))
+    }, [query]);
 
     return (
         <div>
-            <h3>Listagem de Produtos</h3>
-            <div style={{display: "flex"}}>
-            {products.map(prod => <div style={style}><ProductCard style={style} product_name = {prod.name} /></div>)}
+            <div style={{display: "flex", justifyContent: "center"}}>
+                <SearchBar value={query} onChange={(e) => setQuery(e.target.value)}/>
+            </div>   
+            <div style={{display: "flex", margin: "20px"}}>
+                {
+                    query === ""?
+                    products.map(prod => <div key={prod.id} style={{margin: "5px"}}><ProductCard product_name = {prod.name} /></div>):
+                    searchResult.map(prod => <div key={prod.id} style={{margin: "5px"}}><ProductCard product_name = {prod.name} /></div>)
+                }
             </div>
         </div>       
     );
