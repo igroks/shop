@@ -1,3 +1,4 @@
+import { display } from "@mui/system";
 import { useState, useEffect } from "react";
 import ProductCard from "../products_card";
 
@@ -12,13 +13,15 @@ function ListProducts() {
     }, []);
 
     const style = {
-        marginBottom: "5px"
+        margin: "5px"
     }
 
     return (
         <div>
             <h3>Listagem de Produtos</h3>
-            {products.map(prod => <div style={style}><ProductCard style={style} product_name = {prod.name} /></div>)} 
+            <div style={{display: "flex"}}>
+            {products.map(prod => <div style={style}><ProductCard style={style} product_name = {prod.name} /></div>)}
+            </div>
         </div>       
     );
 }

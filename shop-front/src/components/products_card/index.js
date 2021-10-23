@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 function ProductCard(props) {
     return (
         <div>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ minWidth: 345 }}>
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                         {props.product_name}
