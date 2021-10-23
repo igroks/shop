@@ -3,32 +3,32 @@ import multer from "multer";
 import fs from "fs";
 
 const index = async (req, res) => {
-    try{
-        const products = await Product.findAll();
-        res.send(products);
-    } catch (error){
-        res.status(500).json(error);
-    }
+  try{
+    const products = await Product.findAll();
+    res.send(products);
+  } catch (error){
+    res.status(500).json(error);
+  }
 }
 
 const create = async (req, res) => {
-    try{
-        const product = await Product.create(req.body);
-        res.send(product);
-    }catch (error){
-        res.status(500).json(error);
-    }
+  try{
+    const product = await Product.create(req.body);
+    res.send(product);
+  }catch (error){
+    res.status(500).json(error);
+  }
 }
 
 const read = async (req, res) => {
-    try{
-        const { id } = req.params;
-        const product = await Product.findByPk(id);
-        if (product !== null) res.send(product);
-        else res.status(404).json({error: "Product not found"});
-    }catch (error){
-        res.status(500).json(error);
-    }
+  try{
+    const { id } = req.params;
+    const product = await Product.findByPk(id);
+    if (product !== null) res.send(product);
+    else res.status(404).json({error: "Product not found"});
+  }catch (error){
+    res.status(500).json(error);
+  }
 }
 
 const update = async (req, res) => {

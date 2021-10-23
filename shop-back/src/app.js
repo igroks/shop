@@ -12,22 +12,22 @@ const PORT = process.env.NODE_DOCKER_PORT;
 app.use(express.json());
 
 app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true
+  origin: 'http://localhost:3000',
+  credentials: true
 }));
 
 app.use(session({
-    genid: () => {
-        return uuid();
-    },
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { expires: 10000 }
+  genid: () => {
+    return uuid();
+  },
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { expires: 10000 }
 }));
 
 app.use(routes);
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 });
