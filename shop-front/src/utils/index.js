@@ -1,5 +1,5 @@
 const normalizeQuery = (query) => {
-    return query.toLowerCase();
-}
+  return query.toLowerCase();
+};
 
-export default { normalizeQuery }
+export default { normalizeQuery };
