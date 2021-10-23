@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../products_card";
 import SearchBar from "../search_bar";
+import utils from "../../utils";
 
 function ListProducts() {
 
@@ -15,7 +16,7 @@ function ListProducts() {
     }, []);
 
     useEffect(() => {
-        setSearchResult(products.filter(prod => prod.name.toLowerCase().includes(query.toLowerCase())))
+        setSearchResult(products.filter(prod => utils.normalizeQuery(prod.name).includes(utils.normalizeQuery(query))))
     }, [query]);
 
     return (
