@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../products_card";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 
-function Products() {
+function ListProducts() {
 
     const [products, setProducts] = useState([]);
 
@@ -25,5 +23,5 @@ function Products() {
     );
 }
  
-export default Products;
+export default ListProducts;
  

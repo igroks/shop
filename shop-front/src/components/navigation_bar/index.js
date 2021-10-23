@@ -6,7 +6,7 @@ const style = {
     backgroundColor: "#212121"
 }
 
-export default function NavBar() {
+function NavBar() {
     return (
         <AppBar position="static" style={style}>
             <Toolbar>
@@ -16,4 +16,6 @@ export default function NavBar() {
             </Toolbar>
         </AppBar>
     );
-  }
+}
+
+export default NavBar;

@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-function products_card(props) {
+function ProductCard(props) {
     return (
         <div>
             <Card sx={{ maxWidth: 345 }}>
@@ -22,5 +22,5 @@ function products_card(props) {
     )
 }
 
-export default products_card;
+export default ProductCard;
 
