@@ -4,7 +4,6 @@ import SearchBar from "../search_bar";
 import utils from "../../utils";
 import { Link } from "react-router-dom";
 
-
 function ListProducts() {
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("");
@@ -30,7 +29,7 @@ function ListProducts() {
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{display: "flex", justifyContent: "center"}}>
         <SearchBar value={query} onChange={(e) => setQuery(e.target.value)}/>
       </div>
       <div style={{ display: "flex", margin: "20px" }}>

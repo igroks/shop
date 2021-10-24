@@ -5,16 +5,37 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from '@mui/material/CardMedia';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
+import utils from "../../utils";
+
+const StyledCard = styled(Card)(() => ({
+  minWidth: 345,
+  maxWidth: 345,
+  minHeight: 450,
+  maxHeight: 450  
+}));
+
+const CardProductName = styled(Typography)(() => ({
+  fontSize: 16, 
+  fontWeight: "bold" 
+}));
+
+const CardProductPrice = styled(Typography)(() => ({
+  fontSize: 24, 
+  fontWeight: "bold",
+  color: "black" 
+}));
+
+const SyledCardActions = styled(CardActions)(() => ({
+  display: "flex", 
+  justifyContent: "flex-end", 
+  marginTop: "-40px" 
+}));
 
 function ProductCard(props) {
   return (
     <div>
-      <Card sx={{ 
-        minWidth: 345,
-        maxWidth: 345,
-        minHeight: 450,
-        maxHeight: 450  
-      }}>
+      <StyledCard>
         <CardMedia
           component="img"
           height="340"
@@ -22,17 +43,17 @@ function ProductCard(props) {
           alt="product image"
         />
         <CardContent>
-          <Typography sx={{fontSize: 16, fontWeight: "bold"}} color="text.secondary" gutterBottom>
+          <CardProductName color="text.secondary" gutterBottom>
             {props.product_name}
-          </Typography>
-          <Typography sx={{fontSize: 24, fontWeight: "bold", color: "black"}} color="text.secondary" gutterBottom>
-            R$ {props.price.replace(".",",")}
-          </Typography>
+          </CardProductName>
+          <CardProductPrice gutterBottom>
+            {utils.formatPrice(props.price)}
+          </CardProductPrice>
         </CardContent>
-        <CardActions style={{display: "flex", justifyContent: "flex-end", marginTop: "-40px"}}>
+        <SyledCardActions>
           <Button size="small">Adicionar ao carrinho</Button>
-        </CardActions>
-      </Card>
+        </SyledCardActions>
+      </StyledCard>
     </div>
   );
 }
