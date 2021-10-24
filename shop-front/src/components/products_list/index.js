@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import ProductCard from "../products_card";
 import SearchBar from "../search_bar";
 import utils from "../../utils";
+import { Link } from "react-router-dom";
+
 
 function ListProducts() {
   const [products, setProducts] = useState([]);
@@ -22,6 +24,10 @@ function ListProducts() {
     );
   }, [query]);
 
+  const linksStyle = {
+    textDecoration: "none",
+  };
+
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -30,14 +36,18 @@ function ListProducts() {
       <div style={{ display: "flex", margin: "20px" }}>
         {query === ""
           ? products.map((prod) => (
-              <div key={prod.id} style={{ margin: "5px" }}>
-                <ProductCard product_name={prod.name} price={prod.price}/>
-              </div>
+              <Link to={`/product/${prod.id}`} style={linksStyle}>
+                <div key={prod.id} style={{ margin: "5px" }}>
+                  <ProductCard product_name={prod.name} price={prod.price}/>
+                </div>
+              </Link>
             ))
           : searchResult.map((prod) => (
-              <div key={prod.id} style={{ margin: "5px" }}>
-                <ProductCard product_name={prod.name} price={prod.price}/>
-              </div>
+              <Link to={`/product/${prod.id}`} style={linksStyle}>
+                <div key={prod.id} style={{ margin: "5px" }}>
+                  <ProductCard product_name={prod.name} price={prod.price}/>
+                </div>
+              </Link>
             ))}
       </div>
     </div>

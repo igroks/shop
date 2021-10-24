@@ -30,7 +30,7 @@ function ProductCard(props) {
           </Typography>
         </CardContent>
         <CardActions style={{display: "flex", justifyContent: "flex-end", marginTop: "-40px"}}>
-          <Button size="small">Vizualizar</Button>
+          <Button size="small">Adicionar ao carrinho</Button>
         </CardActions>
       </Card>
     </div>
