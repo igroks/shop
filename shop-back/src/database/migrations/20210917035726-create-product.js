@@ -15,6 +15,9 @@ module.exports = {
       price: {
         type: Sequelize.DECIMAL(12,2)
       },
+      description: {
+        type: Sequelize.STRING
+      },
       inventory: {
         type: Sequelize.INTEGER
       },
