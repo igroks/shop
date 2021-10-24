@@ -22,12 +22,15 @@ function ProductCard(props) {
           alt="product image"
         />
         <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          <Typography sx={{fontSize: 16, fontWeight: "bold"}} color="text.secondary" gutterBottom>
             {props.product_name}
           </Typography>
+          <Typography sx={{fontSize: 24, fontWeight: "bold", color: "black"}} color="text.secondary" gutterBottom>
+            R$ {props.price.replace(".",",")}
+          </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
+        <CardActions style={{display: "flex", justifyContent: "flex-end", marginTop: "-40px"}}>
+          <Button size="small">Vizualizar</Button>
         </CardActions>
       </Card>
     </div>

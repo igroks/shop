@@ -25,18 +25,18 @@ function ListProducts() {
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} />
+        <SearchBar value={query} onChange={(e) => setQuery(e.target.value)}/>
       </div>
       <div style={{ display: "flex", margin: "20px" }}>
         {query === ""
           ? products.map((prod) => (
               <div key={prod.id} style={{ margin: "5px" }}>
-                <ProductCard product_name={prod.name} />
+                <ProductCard product_name={prod.name} price={prod.price}/>
               </div>
             ))
           : searchResult.map((prod) => (
               <div key={prod.id} style={{ margin: "5px" }}>
-                <ProductCard product_name={prod.name} />
+                <ProductCard product_name={prod.name} price={prod.price}/>
               </div>
             ))}
       </div>
