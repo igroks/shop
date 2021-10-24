@@ -18,12 +18,12 @@ function NavBar() {
     <AppBar position="static" style={style}>
       <Toolbar>
         <Typography variant="h6" component="div">
-          <Link to="/" underline="none" style={linksStyle}>
+          <Link to="/" style={linksStyle}>
             Shop
           </Link>
         </Typography>
         <Typography variant="h9" component="div">
-          <Link to="/about" underline="none" style={linksStyle}>
+          <Link to="/about" style={linksStyle}>
             Sobre
           </Link>
         </Typography>
