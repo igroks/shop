@@ -5,15 +5,14 @@ const inputStyle = {
   width: "100%",
   height: 30,
   border: "0 none",
-  outline: 0,
-  backgroundColor: "#F2F2F2",
+  outline: 0
 };
 
 const searhBarStyle = {
   padding: 5,
   marginTop: 20,
   display: "flex",
-  backgroundColor: "#F2F2F2",
+  backgroundColor: "white",
   height: 30,
   borderRadius: 5,
   width: "25%",
