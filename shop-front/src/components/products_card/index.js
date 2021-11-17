@@ -32,7 +32,7 @@ const SyledCardActions = styled(CardActions)(() => ({
   marginTop: "-40px" 
 }));
 
-function ProductCard(props) {
+function ProductsCard(props) {
   return (
     <div>
       <StyledCard>
@@ -58,4 +58,4 @@ function ProductCard(props) {
   );
 }
 
-export default ProductCard;
+export default ProductsCard;

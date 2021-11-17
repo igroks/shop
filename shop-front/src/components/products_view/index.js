@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from '@mui/material/IconButton';
 import Icon from '@mui/material/Icon';
 
-function ProductView() {
+function ProductsView() {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const history = useHistory();
@@ -41,4 +41,4 @@ function ProductView() {
   );
 }
 
-export default ProductView;
+export default ProductsView;

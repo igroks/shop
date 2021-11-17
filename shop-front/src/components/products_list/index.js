@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../products_card";
+import ProductsCard from "../products_card";
 import SearchBar from "../search_bar";
 import utils from "../../utils";
-import { Link } from "react-router-dom";
+import Fab from '@mui/material/Fab';
+import Icon from '@mui/material/Icon';
+import { Link,  useHistory  } from "react-router-dom";
 
-function ListProducts() {
+function ProductsList() {
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push('/products/add');
+  }
 
   useEffect(() => {
     fetch("http://localhost:3020/products", { credentials: "include" })
@@ -35,22 +42,25 @@ function ListProducts() {
       <div style={{ display: "flex", margin: "20px" }}>
         {query === ""
           ? products.map((prod) => (
-              <Link to={`/product/${prod.id}`} style={linksStyle}>
+              <Link to={`/products/${prod.id}`} style={linksStyle}>
                 <div key={prod.id} style={{ margin: "5px" }}>
-                  <ProductCard product_name={prod.name} price={prod.price}/>
+                  <ProductsCard product_name={prod.name} price={prod.price}/>
                 </div>
               </Link>
             ))
           : searchResult.map((prod) => (
-              <Link to={`/product/${prod.id}`} style={linksStyle}>
+              <Link to={`/products/${prod.id}`} style={linksStyle}>
                 <div key={prod.id} style={{ margin: "5px" }}>
-                  <ProductCard product_name={prod.name} price={prod.price}/>
+                  <ProductsCard product_name={prod.name} price={prod.price}/>
                 </div>
               </Link>
             ))}
       </div>
+      <Fab color="primary" aria-label="add" onClick={handleClick}>
+        <Icon>add</Icon>
+      </Fab>
     </div>
   );
 }
 
-export default ListProducts;
+export default ProductsList;

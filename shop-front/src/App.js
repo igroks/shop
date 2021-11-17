@@ -1,6 +1,6 @@
 import NavBar from './components/navigation_bar';
 import ProductsList from './components/products_list';
-import ProductView from './components/product_view';
+import ProductsView from './components/products_view';
 import About from './components/about';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -10,7 +10,7 @@ function App() {
       <NavBar/>
       <Switch>
         <Route path="/" exact component={ProductsList}/>
-        <Route path="/product/:id" exact component={ProductView}/>
+        <Route path="/products/:id" exact component={ProductsView}/>
         <Route path="/about" exact component={About}/>
       </Switch>
     </BrowserRouter>
