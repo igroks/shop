@@ -39,18 +39,18 @@ function ProductsList() {
       <div style={{display: "flex", justifyContent: "center"}}>
         <SearchBar value={query} onChange={(e) => setQuery(e.target.value)}/>
       </div>
-      <div style={{ display: "flex", margin: "20px" }}>
+      <div style={{ display: "flex", margin: "50px", flexWrap: 'wrap', justifyContent: "center"}}>
         {query === ""
           ? products.map((prod) => (
               <Link to={`/products/${prod.id}`} style={linksStyle}>
-                <div key={prod.id} style={{ margin: "5px" }}>
+                <div key={prod.id} style={{ margin: "7px" }}>
                   <ProductsCard product_name={prod.name} price={prod.price}/>
                 </div>
               </Link>
             ))
           : searchResult.map((prod) => (
               <Link to={`/products/${prod.id}`} style={linksStyle}>
-                <div key={prod.id} style={{ margin: "5px" }}>
+                <div key={prod.id} style={{ margin: "7px" }}>
                   <ProductsCard product_name={prod.name} price={prod.price}/>
                 </div>
               </Link>
