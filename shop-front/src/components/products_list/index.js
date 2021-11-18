@@ -39,7 +39,7 @@ function ProductsList() {
       <div style={{display: "flex", justifyContent: "center"}}>
         <SearchBar value={query} onChange={(e) => setQuery(e.target.value)}/>
       </div>
-      <div style={{ display: "flex", margin: "50px", flexWrap: 'wrap', justifyContent: "center"}}>
+      <div style={{ display: "flex", padding: "50px", flexWrap: 'wrap', justifyContent: "center"}}>
         {query === ""
           ? products.map((prod) => (
               <Link to={`/products/${prod.id}`} style={linksStyle}>
@@ -56,7 +56,7 @@ function ProductsList() {
               </Link>
             ))}
       </div>
-      <Fab color="primary" aria-label="add" onClick={handleClick}>
+      <Fab style={{position: 'fixed', top: '93%', right: '0.5%'}} color="primary" aria-label="add" onClick={handleClick}>
         <Icon>add</Icon>
       </Fab>
     </div>
