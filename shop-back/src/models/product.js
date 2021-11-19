@@ -15,7 +15,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Product.init({
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len:{
+          args: [3, 50],
+          msg: 'O nome precisar conter entre 3 e 50 caracteres !'
+        } 
+      }
+    },
     price: DataTypes.DECIMAL,
     description: DataTypes.STRING,
     inventory: DataTypes.INTEGER
