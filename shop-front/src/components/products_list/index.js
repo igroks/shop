@@ -56,7 +56,7 @@ function ProductsList() {
               </Link>
             ))}
       </div>
-      <Fab style={{position: 'fixed', top: '93%', right: '0.5%'}} color="primary" aria-label="add" onClick={handleClick}>
+      <Fab style={{position: 'fixed', bottom: '0.5%', right: '0.5%'}} color="primary" aria-label="add" onClick={handleClick}>
         <Icon>add</Icon>
       </Fab>
     </div>
