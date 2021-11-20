@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 function ProductsAdd() {
 
   const [name, setName] = useState('');
+  const [nameError, setNameError] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0);
   const [inventory, setInventory] = useState(0);
@@ -38,7 +39,7 @@ function ProductsAdd() {
       setIsPending(false);
       if(json.errors){
         json.errors.forEach(error => {
-          console.log(error);
+          if(error.path === 'name') setNameError(error.message);
         });
       }else{
         history.push(`/products/${json.id}`);
@@ -58,12 +59,19 @@ function ProductsAdd() {
           '& .MuiTextField-root': { m: 1 },
         }}>
           <TextField 
+            error={nameError !== ''}
             style={{width:'60%'}}
             id="name" 
             label="Nome" 
             variant="outlined" 
             value={name} 
-            onChange={(e) => setName(e.target.value)}
+            onChange={
+              (e) =>  {
+                setName(e.target.value);
+                setNameError('');
+              }
+            }
+            helperText={nameError}
           />
           <div style={{display: "flex", alignItems: 'baseline'}}>
             <TextField
