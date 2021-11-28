@@ -6,11 +6,13 @@ import IconButton from '@mui/material/IconButton';
 import Icon from '@mui/material/Icon';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useSelector } from "react-redux";
 
 function ProductsView() {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const history = useHistory();
+  const user = useSelector(state => state.user);
 
   useEffect(() => {
     fetch(`http://localhost:3020/products/${id}`, { credentials: "include" })
@@ -56,7 +58,7 @@ function ProductsView() {
             <div style={{display:"inline"}}>
               <IconButton size="small" style={{margin: "5px 5px 5px 5px"}} onClick={handleClick}><Icon>west</Icon></IconButton>
             </div>
-            <div style={{display:"inline", float: "right", margin: "5px 5px 5px 5px"}}>
+            {user.userType === 'collaborator' && <div style={{display:"inline", float: "right", margin: "5px 5px 5px 5px"}}>
                 <IconButton size="small" onClick={handleClickMenu}><Icon>menu</Icon></IconButton>
                 <Menu
                   id="basic-menu"
@@ -70,7 +72,7 @@ function ProductsView() {
                   <MenuItem onClick={handleEdit}>Editar</MenuItem>
                   <MenuItem onClick={handleDelete}>Excluir</MenuItem>
                 </Menu>
-            </div> 
+            </div>} 
           </div>
           <Typography sx={{fontSize: 32, fontWeight: "bold", margin: "15px"}} color="black" gutterBottom>
             {product.name}
