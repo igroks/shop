@@ -14,8 +14,12 @@ const create = async (req, res) => {
   try{
     bcrypt.genSalt(parseInt(process.env.BCRYPT_ROUNDS), (error, salt) => {
       bcrypt.hash(req.body.password, salt, async (error, hash) => {
-        await  User.create({...req.body, password: hash});
-        res.send({msg: "Created user"});
+        try{
+          await User.create({...req.body, password: hash});
+          res.send({msg: "Created user"});
+        }catch (error){
+          res.status(500).send(error);
+        }
       });
     });
   }catch (error){
