@@ -5,12 +5,14 @@ import utils from "../../utils";
 import Fab from '@mui/material/Fab';
 import Icon from '@mui/material/Icon';
 import { Link,  useHistory  } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const history = useHistory();
+  const user = useSelector(state => state.user);
 
   const handleClick = () => {
     history.push('/products/add');
@@ -28,7 +30,7 @@ function ProductsList() {
         utils.normalizeQuery(prod.name).includes(utils.normalizeQuery(query))
       )
     );
-  }, [query]);
+  }, [query, products]);
 
   const linksStyle = {
     textDecoration: "none",
@@ -56,9 +58,11 @@ function ProductsList() {
               </Link>
             ))}
       </div>
-      <Fab style={{position: 'fixed', bottom: '0.5%', right: '0.5%'}} color="primary" aria-label="add" onClick={handleClick}>
-        <Icon>add</Icon>
-      </Fab>
+      {
+        user.userType === 'collaborator' && <Fab style={{position: 'fixed', bottom: '0.5%', right: '0.5%'}} color="primary" aria-label="add" onClick={handleClick}>
+          <Icon>add</Icon>
+        </Fab>
+      }
     </div>
   );
 }
