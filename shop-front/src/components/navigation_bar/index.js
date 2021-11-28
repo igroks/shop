@@ -1,6 +1,9 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import IconButton from '@mui/material/IconButton';
+import Icon from '@mui/material/Icon';
+import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { useSelector } from "react-redux";
@@ -29,6 +32,10 @@ function NavBar() {
     history.push('/');
   }
 
+  const handleLogin = () => {
+    history.push('/login');
+  }
+
   return (
     <AppBar position="static" style={style}>
       <Toolbar>
@@ -42,16 +49,10 @@ function NavBar() {
             Sobre
           </StyledLink>
         </Typography>
-        {!user.logged && <Typography variant="h9" component="div">
-          <StyledLink to="/login">
-            Login
-          </StyledLink>
-        </Typography>}
-        {user.logged && <Typography variant="h9" component="div">
-          <StyledLink onClick={handleLogout} to="#">
-            Logout
-          </StyledLink>
-        </Typography>}
+        <Typography variant="h9" component="div" style={{marginLeft: "90%"}}>
+          {!user.logged && <Button color="inherit" onClick={handleLogin}>Login</Button>}
+          {user.logged && <IconButton onClick={handleLogout}><Icon style={{color:"white"}}>account_circle</Icon></IconButton>}
+        </Typography>
       </Toolbar>
     </AppBar>
   );
