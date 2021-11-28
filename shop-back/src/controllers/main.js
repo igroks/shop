@@ -23,11 +23,11 @@ const login = async (req, res) => {
           req.session.userId = user.id;
           res.json({ msg: "Logged in user" });
         } else {
-          res.status(401).json({ msg: "Incorrect password" });
+          res.status(401).json({ msg: "Incorrect email or password" });
         }
       });
     } else {
-      res.status(401).json({ msg: "Incorrect email" });
+      res.status(401).json({ msg: "Incorrect email or password" });
     }
   } catch (error) {
     res.status(500).json(error);
