@@ -18,7 +18,16 @@ module.exports = (sequelize, DataTypes) => {
   };
   User.init({
     userTypeId: DataTypes.INTEGER,
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len:{
+          args: [2, 100],
+          msg: 'O nome precisar conter entre 2 e 100 caracteres !'
+        } 
+      }
+    },
     email: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
