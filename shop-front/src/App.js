@@ -5,6 +5,7 @@ import ProductsAdd from './components/products_add';
 import About from './components/about';
 import ProductsEdit from './components/product_edit';
 import Login from './components/login';
+import SignUp from './components/signup';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/products/:id/edit" exact component={ProductsEdit}/>
         <Route path="/about" exact component={About}/>
         <Route path="/login" exact component={Login}/>
+        <Route path="/signup" exact component={SignUp}/>
       </Switch>
     </BrowserRouter>
   );

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from '../../redux/slicer/user';
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
 
@@ -55,6 +56,11 @@ function Login() {
         />
         <button onClick={handleClick}>Entrar</button>
       </form>
+      <div>
+        <Link to="/signup">
+          Criar conta
+        </Link>
+      </div>
     </div>
   );
 }

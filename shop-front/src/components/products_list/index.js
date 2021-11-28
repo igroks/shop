@@ -6,6 +6,8 @@ import Fab from '@mui/material/Fab';
 import Icon from '@mui/material/Icon';
 import { Link,  useHistory  } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -14,8 +16,23 @@ function ProductsList() {
   const history = useHistory();
   const user = useSelector(state => state.user);
 
-  const handleClick = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleNewProduct = () => {
     history.push('/products/add');
+  };
+
+  const handleNewUser = () => {
+    history.push('/signup');
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   }
 
   useEffect(() => {
@@ -59,10 +76,23 @@ function ProductsList() {
             ))}
       </div>
       {
-        user.userType === 'collaborator' && <Fab style={{position: 'fixed', bottom: '0.5%', right: '0.5%'}} color="primary" aria-label="add" onClick={handleClick}>
-          <Icon>add</Icon>
-        </Fab>
+        user.userType === 'collaborator' &&
+          <Fab style={{position: 'fixed', bottom: '0.5%', right: '0.5%'}} color="primary" aria-label="add" onClick={handleClick}>
+            <Icon>add</Icon>
+          </Fab>
       }
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleNewUser}>Usuário</MenuItem>
+        <MenuItem onClick={handleNewProduct}>Produto</MenuItem>
+      </Menu>
     </div>
   );
 }
