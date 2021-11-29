@@ -6,13 +6,23 @@ import IconButton from '@mui/material/IconButton';
 import Icon from '@mui/material/Icon';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import utils from "../../utils";
 import { useSelector } from "react-redux";
+import Button from '@mui/material/Button';
+import { useDispatch } from "react-redux";
+import { add } from '../../redux/slicer/cart'
+import Divider from '@mui/material/Divider';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import TextField from '@mui/material/TextField';
+
 
 function ProductsView() {
   const [product, setProduct] = useState({});
+  const [amount, setAmount] = useState(1);
   const { id } = useParams();
   const history = useHistory();
   const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch(`http://localhost:3020/products/${id}`, { credentials: "include" })
@@ -50,6 +60,15 @@ function ProductsView() {
       });
   }
 
+  const handleAddToCart = () => {
+    dispatch(add({...product, amount}));
+  }
+
+  const handleBuyNow = () => {
+    dispatch(add({...product, amount}));
+    history.push('/cart');
+  }
+
   return(
     <div style={{display: "flex", justifyContent: "center"}}>
       <div style={{display: "flex", marginTop: 20, width: '65%', justifyContent: "space-between", height: "900px"}}>
@@ -82,9 +101,45 @@ function ProductsView() {
           </Typography>
         </div>
         <div style={{backgroundColor: "white", padding: "10px", width: "28%", borderRadius: 7}}>
-          <Typography sx={{fontSize: 16, fontWeight: "bold"}} color="text.secondary" gutterBottom>
-            {product.price}
+          <Typography sx={{fontSize: 28, fontWeight: "bold"}} color="text.secondary" gutterBottom>
+            {utils.formatPrice(`${product.price}`)}
           </Typography>
+          <Typography sx={{fontSize: 11}} color="text.primary">
+            em até 10x sem juros no cartão de crédito
+          </Typography>
+          <Divider variant="middle" style ={{marginTop:"15px"}}/>
+          <div style={{marginTop:"300px"}}>
+          <Typography sx={{fontSize: 14, fontWeight: "bold"}} color="text.primary">
+              Quantidade:
+            </Typography>
+            <ButtonGroup size="large" aria-label="large button group">
+              <Button size="small" onClick={() => {
+                  if(amount - 1 > 0) setAmount(amount-1); 
+                }} key="one"><Icon>remove</Icon></Button>,
+              <TextField size="small" value={amount} id="outlined-basic" variant="outlined" onChange={(e) => {
+                  if(e.target.value > 0 && e.target.value <= product.inventory)setAmount(e.target.value);
+                }}/>
+              <Button size="small" onClick={() => {
+                  if(amount + 1 <= product.inventory) setAmount(amount+1);
+                }} key="three"><Icon>add</Icon></Button>,
+            </ButtonGroup>
+            <Typography sx={{fontSize: 14, fontWeight: "bold"}} color="text.primary">
+              Estoque disponível: {product.inventory}
+            </Typography>
+          </div>
+          <Divider variant="middle" style={{marginTop: "300px"}} />
+          <div style={{marginTop: "15px"}}>
+            <div style={{display:"flex", justifyContent:"center", marginBottom: "5px"}}>
+              <Button onClick={handleAddToCart} variant="outlined" size="large" fullWidth>
+                Adicionar ao Carinho
+              </Button>
+            </div>
+            <div style={{display:"flex", justifyContent:"center", marginBottom: "5px"}}>
+              <Button onClick={handleBuyNow} variant="contained" size="large" fullWidth>
+                Comprar Agora
+              </Button>
+            </div>            
+          </div>
         </div>
       </div>  
     </div>
