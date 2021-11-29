@@ -63,14 +63,14 @@ function ProductsList() {
           ? products.map((prod) => (
               <Link to={`/products/${prod.id}`} style={linksStyle}>
                 <div key={prod.id} style={{ margin: "7px" }}>
-                  <ProductsCard product_name={prod.name} price={prod.price}/>
+                  <ProductsCard product={prod}/>
                 </div>
               </Link>
             ))
           : searchResult.map((prod) => (
               <Link to={`/products/${prod.id}`} style={linksStyle}>
                 <div key={prod.id} style={{ margin: "7px" }}>
-                  <ProductsCard product_name={prod.name} price={prod.price}/>
+                  <ProductsCard product={prod}/>
                 </div>
               </Link>
             ))}

@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import utils from "../../utils";
+import { useDispatch } from "react-redux";
+import { add } from '../../redux/slicer/cart'
 
 const StyledCard = styled(Card)(() => ({
   minWidth: 345,
@@ -33,6 +35,13 @@ const SyledCardActions = styled(CardActions)(() => ({
 }));
 
 function ProductsCard(props) {
+
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(add({...props.product, amount: 1}));
+  }
+
   return (
     <div>
       <StyledCard>
@@ -44,14 +53,14 @@ function ProductsCard(props) {
         />
         <CardContent>
           <CardProductName color="text.secondary" gutterBottom>
-            {props.product_name}
+            {props.product.name}
           </CardProductName>
           <CardProductPrice gutterBottom>
-            {utils.formatPrice(props.price)}
+            {utils.formatPrice(props.product.price)}
           </CardProductPrice>
         </CardContent>
         <SyledCardActions>
-          <Button size="small">Adicionar ao carrinho</Button>
+          <Button size="small" onClick={handleClick}>Adicionar ao carrinho</Button>
         </SyledCardActions>
       </StyledCard>
     </div>
