@@ -1,3 +1,7 @@
+import TextField from '@mui/material/TextField';
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Alert from '@mui/material/Alert';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from '../../redux/slicer/user';
@@ -31,35 +35,52 @@ function Login() {
       })
       .then(json => {
         console.log(json);
-        dispatch(login(json));
-        history.push('/');
-      })
+        if(error){
+          dispatch(login(json));
+          history.push('/');
+        }        
+      });
   }
 
   return (
-    <div>
-      <h3>Login</h3>
-      <form>
-        <label htmlFor="email">Email:</label>
-        <input 
-          type="text" 
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} 
-        />
-        <label htmlFor="password">Senha:</label>
-        <input 
-          type="password" 
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} 
-        />
-        <button onClick={handleClick}>Entrar</button>
-      </form>
-      <div>
-        <Link to="/signup">
-          Criar conta
-        </Link>
+    <div style={{display: "flex", justifyContent: "center"}}>
+      <div style={{backgroundColor: 'white', marginTop:"12%", height:"500px", borderRadius:"5px", minWidth:"560px", padding:"15px"}}>
+        <Typography sx={{display: "flex", justifyContent: "center", fontSize: 32, fontWeight: "bold"}} color="black" gutterBottom>
+          Olá, Bem-Vindo(a) ao Shop
+        </Typography>
+        <Typography sx={{display: "flex", justifyContent: "center", fontSize: 20, fontWeight: "bold"}} color="black" gutterBottom>
+          Sua loja referência em e-commerce!
+        </Typography>
+        <div style={{marginBottom:"25px", marginTop:"70px"}}>
+          <TextField
+            id="email"
+            label="Email"
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)}
+            fullWidth
+          />
+        </div>
+        <div style={{marginBottom:"25px"}}>
+          <TextField
+            id="password"
+            label="Senha"
+            value={password} 
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+          />
+        </div>
+        <div style={{display: "flex", justifyContent: "center", marginBottom:"25px"}} >
+          <Button onClick={handleClick} variant="contained" size="large">Entrar</Button>
+        </div>
+        <div>
+          {
+            error && <Alert severity="error">Email e/ou senha inválidos</Alert>
+          }
+        </div>
+        <div style={{position:"fixed", marginTop:"15px"}}>
+          Ainda não tem cadastro? <Link to="/signup">Cadastra-se</Link>
+        </div>
       </div>
     </div>
   );
