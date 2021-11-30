@@ -12,7 +12,7 @@ const PORT = process.env.NODE_DOCKER_PORT;
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3021',
   credentials: true
 }));
 
