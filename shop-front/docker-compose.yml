@@ -1,0 +1,11 @@
+version: '3.8'
+services: 
+  web:
+    build:
+      context: .
+    env_file: ./.env
+    command: npm start
+    volumes: 
+      - .:/app
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
