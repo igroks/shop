@@ -21,4 +21,4 @@ The server will be available at port `3020`.
 
 # Usage
 
-For a broad knowledge of the functionality of this API see the documentation in the `/api-docs` route.
+For a broad knowledge of the functionality of this API see the documentation in the `/api-docs` endpoint.
