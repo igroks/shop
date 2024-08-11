@@ -1,2 +1,2 @@
 # Shop
-Final project of disciplinary programming for Web II (PW2, from the Portuguese "Progamation for Web 2). The project consisted of implementing an ecommerce, as per the specification file.
+Final project of the programming for Web II discipline (PW2, from the Portuguese "Progamação para Web 2). The project consisted of implementing an ecommerce, according to the specification file.
